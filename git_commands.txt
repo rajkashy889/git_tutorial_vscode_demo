@@ -233,3 +233,12 @@ in commint it will show who commited.
 So that multiple request can come and contrubute in opensource project
 
 "Practice it now you will become master in it."  
+
+-------------------------
+git checkout rajkashy/multiply  :we are in this repo
+git status  :in any changes 
+git add <filename>
+git commit -m "msg" :commited in rajkashy/multiply
+git push -u origin rajkashy/multiply  :push to github
+
+Repeat above for dev and master/main alsot
