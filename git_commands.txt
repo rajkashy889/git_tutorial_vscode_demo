@@ -1,0 +1,222 @@
+
+-----------------------------------------------------------------------
+git --version
+
+-Check user name and email
+git config --global user.name
+git config --global user.name
+
+-git config --global --edit  edit username and password
+To exit from vim
+Esc 
+:w save
+:q exit
+
+-If want to make changes in name and email
+git config --global user.name "new user name"
+git config --global user.email "new user email"
+
+-Create foler for git repository
+mkdir newfolder
+cd newfilder
+git init   :git initialized
+ls
+ls -a : .get repository is created 
+
+Create new file in repository Hello.java
+
+git status                :will tell what changes made in this repository
+
+--ADD			   File Hello.java is created but not added yet
+git add Hello.java        :add file which is not adde in git
+git add --all  		  :Add multiple file   Note: The shorthand command for git add --all is git add -A
+git status                :files are added to the Staging Environment, and we are ready to do our first commit. 
+    new file Hello.java
+--COMMIT
+git commit -m "initial commit meaningfull comment"
+Git Commit Log:-To view the history of commits for a repository, you can use the log command:
+git log    		  :how many commit has made so far hashcode is generated for each commited
+
+--Now make some changes in file Hello.java or project
+git status
+  modified Hello.java
+--Now create one file Driver.java
+git status
+  modified:   Hello.java
+  Untracked files: Driver.java
+
+Now add changes
+git add Driver.java
+git status
+still Hello.java is not in staging bcz not added yet in staging so at this stage if we commit any changes, than only one file will be commited that is Driver.java
+
+Now commit new file with comment
+git commit -m "Driver java class created"
+  Now two commit hashcode is visible commit 98a959b70c72320edfdc196ac9df9dbfc1c0b13b (HEAD -> master) here HEAD move commit to commit basis
+
+[git help --all See All Possible Commands
+cmd + k /clear  cls
+fishshell extention for auto code]
+
+git add .     :all file staging me aajayegi
+git log       :will show all commit so far we have make 3 changes
+
+>Now we can go to at any change time in bach date/time
+	If we want to go at initial commit than we have below commands
+	Currently showing hash code is latest commit so got to below one
+ 
+Goback privious change:
+git checkout <commit hash code/branch name> :previous date/time code can checkout. Branch name example "commit e95f195769dd391ec9d8d2dff0a51c48139f8393"
+git checkout e95f195769dd391ec9d8d2dff0a51c48139f8393"
+    After checkout we are in initial commit and tha current changes is not in initial commit
+    By using checkout we can go at any state of changes made
+
+Now if we check 
+D:\git_tutorial_vscode_demo>git branch
+* (HEAD detached at e95f195)
+  master
+git log   :it will show only this stage changes if only commit then show only one commit 
+
+Now go back to master/current stage
+git checkout master  :come back to current face 
+git log   :now again all commit is visible to us 
+
+>How to create new branch? Basicly there is master branch from this we can create multiple branches
+:We can create many branches from master branch, So that every developer can work on their own branch. 
+,So that changes made in on branch will not impact on others.We can also make many branche from one branch.
+
+
+In production there is one 'master' branch and one is 'dev' branch
+
+--Create branch----
+git branch <branch name> 
+  :git branch dev    :new branch created
+git checkout dev 	:now we are in dev also not recommanded to work here so create one mere branch
+git checkout -b <branch name> 		:new branch will creat and direclty can checkout
+
+git checkout -b rajkishore/multiply 	:so we can recognise who is working on what/So whatever changes we will make here will not impect to other branch
+git status
+git add newfile.java
+git commit -m "added newfile.java"
+
+git checkout dev  :we are now in dev branch/
+git log           :changes made in rajkishore/multiply will not display in dev.
+git merge rajkishore/multiply :now this branch will merge in dev branch
+git log           :all changes will now appear in dev also
+
+Before commiting in master branch first confirm in dev that everything is working file only than make changes in master branch. 
+git checkout master :now in master branch
+git log             :master did't know changes made sofare
+Now confirm everything is working fin than merge in dev only
+git merge dev   :dev branch is merge in master 
+git log         :now all changes from dev is in dev now than we send master to production 
+Basicaly multiple programer can work on diffrent branch and each brache is independent from each other
+
+--IGNORE--
+Ignore file :If we do not want to send it to git eco system
+secretkey.txt  :create file which we want to ignore
+
+touch .gitignore  :now file .gitignore is created and can put secretkey.txt file here 
+
+or can directly create file .gitignore 
+git status 
+	.gitignore
+	secretkey.txt
+now write file name(secretkey.txt) in ".gitignore" file will not dispaly in git status and git will not track that file
+we can also put  .gitignore in .gitignore so this file also will not track
+git status
+--------------
+GitHub :now come to the githug in you profile
+-------------
+Add local repositorory to github
+-create one branch can create same name which is declare in local repository after creating github will ask what we want to do 
+aslo mention command for localrepository and new recository follow commands
+
+Create new repository with same name as git -->descripbe->public/private etc create repository
+now it will ask for setup:-what we want to do-> where we want to create new one or repository is already exist.
+…or create a new repository on the command line/…or push an existing repository from the command line/…or import code from another repository
+echo "# git_tutorial_vscode_demo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/rajkashy889/git_tutorial_vscode_demo.git
+git push -u origin main
+
+So in case we have already repository created so we will follow below steps
+
+…or push an existing repository from the command line
+git remote -v :initialy it will not display anything 
+
+git remote add origin https://github.com/rajkashy889/git_tutorial_vscode_demo.git
+
+git remote -v :now it will tell the origin for fetch or push
+origin  https://github.com/rajkashy889/git_tutorial_vscode_demo.git (fetch)
+origin  https://github.com/rajkashy889/git_tutorial_vscode_demo.git (push)
+now origin has been created where we can do push or pull  
+git branch -M main     (master):push
+git push -u origin main (master):changes push in origin(origin name could be anything but its convention)
+will ask for authentication enter your credential it ask for first time
+CONGRATULATIONS YOUR FIRST COMMIT HAS BE DONE
+
+Repeated code
+[Copy commands and run from vscode terminal or cmd FOR MASTER
+git remote -v
+git remote add origin(can give any name but its convantion) https:...
+git remote -v
+git branch -M  mster
+git push -u origin master
+-will give error if try to push with diffrent user name so first remove from key chain and login with current user and password
+enter   github username:
+	and password
+Fist time will ask ueser and password but later it will store in key chain 
+Congrats first commint is done.]
+
+Now make any changes
+
+git add filename.java
+git commit -m "msg"
+git push (here no need to write bcz by default its origin and master)
+git push -u origin dev (dev branch will also push )
+
+How multiple developer can work in a project?
+there is two way 
+make is opensource so developer can fork and make changes and send pull requests
+or if we want developer can make changes in same code for this we can add collabrator
+	Settin->manage access->invite a collabrator->enter name/email
+
+How can contribute to others code or forke ?
+
+-Add others code to our repository
+Create new repository public ->can fork any one and contribute anyone
+Now those who want to contribue he can fork so new repository will created on his githug->now can make any changes in it
+copy https: link
+
+come to git vscode repository(or else) select directory where you want to clone
+git clone <repo url>
+ls
+....
+now go to git command from vscode
+
+git config --global --edit  :will show user and password of current user if we want to change user make changes here
+
+vim <file name> :is a editor lear how to edit here
+i :for insert 
+Esc :w :q  exit from editor
+cat <filename> :check what changes has made
+
+create new branch and make changes in it not in master
+git add <file name>
+git commit -m "msg"
+git push 
+
+now go to github can see make changes there
+changes will show on forke not to master/owner 
+now go to 'contrubute' option->open pull request->create pull request(before create check what changes has made so far)->add comment-review again-create pull request
+
+now master/owner will Check what changes has made
+owner will check->pull request->Filechange->review change->approve..->review merge pull request -merge :now changes made in origina repository ->
+in commint it will show who commited.
+So that multiple request can come and contrubute in opensource project
+
+"Practice it now you will become master in it."  
