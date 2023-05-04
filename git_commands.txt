@@ -94,14 +94,14 @@ git branch <branch name>
 git checkout dev 	:now we are in dev also not recommanded to work here so create one mere branch
 git checkout -b <branch name> 		:new branch will creat and direclty can checkout
 
-git checkout -b rajkishore/multiply 	:so we can recognise who is working on what/So whatever changes we will make here will not impect to other branch
+git checkout -b rajkashy/multiply 	:so we can recognise who is working on what/So whatever changes we will make here will not impect to other branch
 git status
 git add newfile.java
 git commit -m "added newfile.java"
 
 git checkout dev  :we are now in dev branch/
-git log           :changes made in rajkishore/multiply will not display in dev.
-git merge rajkishore/multiply :now this branch will merge in dev branch
+git log           :changes made in rajkashy/multiply will not display in dev.
+git merge rajkashy/multiply :now this branch will merge in dev branch
 git log           :all changes will now appear in dev also
 
 Before commiting in master branch first confirm in dev that everything is working file only than make changes in master branch. 
@@ -177,20 +177,31 @@ Now make any changes
 git add filename.java
 git commit -m "msg"
 git push (here no need to write bcz by default its origin and master)
+
+Now we have multiple branch to push do same thing 
+git checkout dev
 git push -u origin dev (dev branch will also push )
+This time it will not ask credentials 
+now got to git hug dev branch is also pushed
+
+Do same for rajkashy/multiply
+git checkout rajkashy/multiply
+git push -u origin rajkashy/multiply
 
 How multiple developer can work in a project?
-there is two way 
-make is opensource so developer can fork and make changes and send pull requests
-or if we want developer can make changes in same code for this we can add collabrator
-	Settin->manage access->invite a collabrator->enter name/email
+There is two way 
+   1.make is opensource so developer can fork and make changes and send pull requests
+   2.or if we want developer can make changes in same code for this we can add collabrator
+	Settin->manage access->invite a collabrator->enter name/email 
 
-How can contribute to others code or forke ?
+now developer can access same repo and clone on their own repository and make changes ->than changes can push
 
+How can contribute to others code or forke ,clone, pull, push?
 -Add others code to our repository
-Create new repository public ->can fork any one and contribute anyone
-Now those who want to contribue he can fork so new repository will created on his githug->now can make any changes in it
-copy https: link
+Create new repository public for opensource anyone can access this repo->can fork any one and contribute anyone
+Now those who want to contribue he can fork so new repository will created on his githug->now can make any changes in it->
+Now clone on our local repo
+copy https: link from projet
 
 come to git vscode repository(or else) select directory where you want to clone
 git clone <repo url>
@@ -202,20 +213,22 @@ git config --global --edit  :will show user and password of current user if we w
 
 vim <file name> :is a editor lear how to edit here
 i :for insert 
-Esc :w :q  exit from editor
+Esc :wq! or x! Enter  exit and save from editor
+Exit without saving :q!
 cat <filename> :check what changes has made
+Learn command for vim editor
 
 create new branch and make changes in it not in master
 git add <file name>
 git commit -m "msg"
 git push 
 
-now go to github can see make changes there
+now got to github can see make changes there
 changes will show on forke not to master/owner 
-now go to 'contrubute' option->open pull request->create pull request(before create check what changes has made so far)->add comment-review again-create pull request
+now got to 'contrubute' option->open pull request->create pull request(before create, check what changes has made so far)->add comment-review again-create pull request
 
-now master/owner will Check what changes has made
-owner will check->pull request->Filechange->review change->approve..->review merge pull request -merge :now changes made in origina repository ->
+now master/owner will chech what changes has made
+owner will check->pull request->Filechange->review change->approve..->review merge pull request -merge :now changes made in original repository ->
 in commint it will show who commited.
 So that multiple request can come and contrubute in opensource project
 
